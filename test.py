@@ -1,6 +1,7 @@
 import unittest
 import main as a
 import pandas as pd
+import numpy as np
 
 class TestMethods(unittest.TestCase):
     def test_load_csv(self):
@@ -23,7 +24,7 @@ class TestMethods(unittest.TestCase):
         df = a.filter_by_race_and_driver_id(df, 841, 20)
         df = a.compute_diff(df)
         m = a.to_numpy_matrix(df)
-        assert len(m) == len(df)-1
+        assert (len(m) == len(df) - 1) & ((len(df) - 1, 2) == m.shape)
 
 
 if __name__ == '__main__':
