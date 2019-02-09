@@ -1,4 +1,3 @@
-# Python program to illustrate # nested functions
 import datetime
 import pandas as pd
 import numpy as np
@@ -13,16 +12,22 @@ def outerFunction(now = datetime.datetime.now()):
         print('Application started at: ', now) 
     innerFunction()
 
-
 def load_csv():
+    ''' Read lap_times.csv and set the column-headers
+        returns pandas.DataFrame '''
     df = pd.read_csv('f1db_csv/lap_times.csv', header=None)
     df.columns = ['race_id', 'driver_id', 'lap', 'position', 'lap_time', 'lap_milliseconds']
     return df
 
+
 def filter_by_race_and_driver_id(df, race, driver):
+    ''' Filter lap_times DataFrame by race_id and driver_id
+        race_id = int, driver_id = int'''
     return df[(df.race_id == race) & (lap_times.driver_id == driver)].sort_values(['lap', 'position'])
 
 def compute_diff(df):
+    ''' Computing difference of each lap time difference 
+        df['diff'] = previous lap + current lap '''
     df = df.set_index(['driver_id', 'lap'])
     df_ = df.groupby(level=0)
     df_ = df_['lap_milliseconds'].diff()
@@ -33,8 +38,10 @@ def compute_diff(df):
     return df
 
 def to_numpy_matrix(df):
+    ''' Transform DataFrame to numpy ndarray [lap, lap_time_difference] '''
     df = df.drop(columns=['lap_milliseconds','position','lap_time', 'race_id', 'driver_id'])  
     m = df.values
+    print(type(m))
     m = np.delete(m, (0), axis=0)
     return m
 
@@ -45,11 +52,11 @@ def kmeans(m):
     print("Cluster centers: ", kmeans.cluster_centers_)
     print('Labels: ', kmeans.labels_) 
 
-    plt.scatter(m[:,0], m[:,1], c=labels, cmap='rainbow') 
+    plt.scatter(m[:,0], m[:,1], c= labels, cmap= 'rainbow') 
     plt.show()
 
     print('Silhouette score: ', metrics.silhouette_score(m, labels, metric='euclidean'))
-    print('Score: ',kmeans.score(m))
+    print('Score: ', kmeans.score(m))
 
 if __name__ == '__main__': 
     outerFunction() # Closure
