@@ -12,12 +12,9 @@ def outer_function(now=datetime.datetime.now()):
         print('Application started at: ', now)
     inner_function()
 
-def load_csv():
-    ''' Read lap_times.csv and set the column-headers
-        returns pandas.DataFrame '''
-    df = pd.read_csv('f1db_csv/lap_times.csv', header=None)
-    df.columns = ['race_id', 'driver_id', 'lap', 'position', 'lap_time', 'lap_milliseconds']
-    return df
+def load_csv(filename):
+    ''' Read lap_times.csv and return a Pandas DataFrame '''
+    return pd.read_csv('f1db_csv/'+filename, index_col=0)
 
 
 def filter_by_race_and_driver_id(df, race, driver):
@@ -62,7 +59,7 @@ def k_means(m):
 
 if __name__ == '__main__':
     outer_function() # Closure
-    LAP_TIMES = load_csv()
+    LAP_TIMES = load_csv('lap_times.csv')
     LAP_TIMES = filter_by_race_and_driver_id(LAP_TIMES, 841, 20)
     LAP_TIMES = compute_diff(LAP_TIMES)
     LAP_TIMES = to_numpy_matrix(LAP_TIMES)
