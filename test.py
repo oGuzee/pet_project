@@ -2,7 +2,7 @@ import unittest
 import main as a
 import pandas as pd
 
-class TestStringMethods(unittest.TestCase):
+class TestMethods(unittest.TestCase):
     df = pd.read_csv('f1db_csv/lap_times.csv', index_col=0)
 
     def test_csv(self):
