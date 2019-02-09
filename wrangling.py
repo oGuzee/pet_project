@@ -22,8 +22,8 @@ circuit_id = circuits['circuit_id']
 status = pd.read_csv('f1db_csv/status.csv', header=None)
 status.columns = ['status_id', 'status']
 status_id = status['status_id']
-
-lap_times = pd.read_csv('f1db_csv/lap_times.csv', header=None)
+lap_times
+lap_times = pd.read_csv('f1db_csv/.csv', header=None)
 lap_times.columns = ['race_id', 'driver_id', 'lap', 'position', 'lap_time', 'lap_milliseconds']
 
 races = pd.read_csv('f1db_csv/races.csv', header=None)
