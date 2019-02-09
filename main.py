@@ -25,7 +25,7 @@ def filter_by_race_and_driver_id(df, race, driver):
 
 def compute_diff(df):
     ''' Computing difference of each lap time difference
-        df['diff'] = previous lap + current lap '''
+        df['lap_milliseconds_diff'] = previous lap + current lap '''
     df = df.set_index(['driver_id', 'lap'])
     df_ = df.groupby(level=0)
     df_ = df_['lap_milliseconds'].diff()
