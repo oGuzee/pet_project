@@ -8,6 +8,7 @@ from sklearn import metrics
 
 
 def outer_function():
+    ''' Closure, prints the time the function is called'''
     now = datetime.datetime.now()
     def inner_function():
         print('Application started at: ', now)
