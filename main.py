@@ -61,7 +61,7 @@ def k_means(m):
     print('Labels: ', kmeans.labels_)
 
     plt.scatter(m[:, 0], m[:, 1], c=labels, cmap='rainbow')
-    plt.show()
+    plt.savefig('figures/hamilton_australia_2011.png')
 
     print('Silhouette score: ', metrics.silhouette_score(m, labels, metric='euclidean'))
     print('Score: ', kmeans.score(m))
@@ -77,7 +77,7 @@ def label_data(m, df):
 if __name__ == '__main__':
     outer_function() # Closure
     df = load_csv('lap_times.csv')
-    df = filter_by_race_and_driver_id(df, 841, 20)
+    df = filter_by_race_and_driver_id(df, 841, 1)
     df = compute_diff(df)
     m = to_numpy_matrix(df)
     labels = k_means(m)
