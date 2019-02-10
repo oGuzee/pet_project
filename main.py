@@ -53,8 +53,7 @@ def time_execution(f):
 @time_execution
 def k_means(m):
     ''' KMeans '''
-    kmeans = KMeans(n_clusters=5, random_state=41)
-    kmeans.fit(m)
+    kmeans = KMeans(n_clusters=5, random_state=41).fit(m)
     labels = kmeans.labels_
     print("Cluster centers: ", kmeans.cluster_centers_)
     print('Labels: ', kmeans.labels_)
@@ -65,11 +64,20 @@ def k_means(m):
     print('Silhouette score: ', metrics.silhouette_score(m, labels, metric='euclidean'))
     print('Score: ', kmeans.score(m))
 
+    return labels
+
+def label_data(m, df):
+    m = m.astype(str)
+    m = np.insert(m, 0, "")
+    df['label'] = m
+    return df
+
 if __name__ == '__main__':
     outer_function() # Closure
-    LAP_TIMES = load_csv('lap_times.csv')
-    LAP_TIMES = filter_by_race_and_driver_id(LAP_TIMES, 841, 20)
-    LAP_TIMES = compute_diff(LAP_TIMES)
-    LAP_TIMES = to_numpy_matrix(LAP_TIMES)
-    # print(LAP_TIMES)
-    k_means(LAP_TIMES)
+    df = load_csv('lap_times.csv')
+    df = filter_by_race_and_driver_id(df, 841, 20)
+    df = compute_diff(df)
+    m = to_numpy_matrix(df)
+    labels = k_means(m)
+    df = label_data(labels, df)
+    print(df)
