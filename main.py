@@ -25,7 +25,7 @@ def filter_by_race_and_driver_id(df, race, driver):
     return df[(df.race_id == race) & (df.driver_id == driver)]\
         .sort_values(['lap', 'position'])
 
-def compute_diff(df):
+def compute_time_diff(df):
     ''' Computing difference of each lap time difference
         df['lap_milliseconds_diff'] = previous lap + current lap '''
     df = df.set_index(['driver_id', 'lap'])
@@ -41,7 +41,6 @@ def to_numpy_matrix(df):
     '''Transform DataFrame to numpy ndarray [lap, lap_time_difference]'''
     df = df.drop(columns=['lap_milliseconds', 'position', 'lap_time', 'race_id', 'driver_id'])
     m = df.values
-    print(type(m))
     m = np.delete(m, (0), axis=0)
     return m
 
@@ -55,20 +54,19 @@ def time_execution(f):
 
 @time_execution
 def k_means(m, figurename):
-    ''' KMeans algorithm is applied. \
-        Parameters: m = np.array (shape==(X,2))\
-                    figurename = str; example=  "hamilton_australia_2011.png"\
-        returns list; clustered labels of the instances '''
+    '''
+    KMeans algorithm is applied. \
+    Parameters: m = np.array (shape==(X,2))\
+                figurename = str; example =  "hamilton_australia_2011.png"\
+    returns list; clustered labels of the instances
+    '''
     kmeans = KMeans(n_clusters=5, random_state=41).fit(m)
     labels = kmeans.labels_
-    print("Cluster centers: ", kmeans.cluster_centers_)
-    print('Labels: ', kmeans.labels_)
 
     plt.scatter(m[:, 0], m[:, 1], c=labels, cmap='rainbow')
     plt.savefig('figures/'+figurename)
 
     print('Silhouette score: ', metrics.silhouette_score(m, labels, metric='euclidean'))
-
     return labels
 
 def label_data(m, df, outname):
@@ -80,10 +78,9 @@ def label_data(m, df, outname):
 
 if __name__ == '__main__':
     outer_function() # Closure
-    df = load_csv('lap_times.csv')
-    df = filter_by_race_and_driver_id(df, 841, 20)
-    df = compute_diff(df)
-    m = to_numpy_matrix(df)
-    labels = k_means(m, 'vettel_australia_2011.png')
-    df = label_data(labels, df, 'vettel_australia_2011.csv')
-    print(df)
+    DATA_FRAME = load_csv('lap_times.csv')
+    FILTERED_FRAME = filter_by_race_and_driver_id(DATA_FRAME, 841, 20)
+    COMPUTED_FRAME = compute_time_diff(FILTERED_FRAME)
+    MATRIX = to_numpy_matrix(COMPUTED_FRAME)
+    LABELS_LIST = k_means(MATRIX, 'vettel_australia_2011.png')
+    FINAL_FRAME = label_data(LABELS_LIST, COMPUTED_FRAME, 'vettel_australia_2011.csv')
