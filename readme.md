@@ -31,9 +31,7 @@ One script: main.py
 main.py loads the data in the *f1db_csv* folder into a Pandas DataFrame and filters by chosen driver *(int(id))* and race event *(int(id))*. After, the lap time differences are computed and the DataFrame is stripped of most of it's colums so only *lap_milliseconds_diff* and *lap* remains.is stripped of most of it's colums so only *lap_milliseconds_diff* and *lap* remains.
 
 This is the data structure to give to the KMeans() algorithm.
-The cluster number k=5 was chosen to fit the wanted target labels. A figure of the date is saved in *figures* directory. The *labels* are saved and
-
-
+The cluster number k=5 was chosen to fit the wanted target labels. A figure of the date is saved in *figures* directory. The *labels* are added to DataFrame. The DataFrame is saved in the *saved_data* directory.
 
 ### Why I chose Formula 1 data
 
@@ -43,11 +41,57 @@ I want to write my masters thesis about Formula 1 data. By modelling a sequence 
 
 Packages
 ![Packages](doc_figures/uml_packages.png)
+<center>Figure 3: Shows the used packages and respective methods</center>
 
 Activity main
 
 ![Activity](doc_figures/activity_umlmu.png)
+<center>Figure 4: The activity in main.py</center>
+
 
 Activity main.k_means()
 
 ![Activity_2](doc_figures/uml_kmeans.png)
+<center>Figure 4: The activity in main.k_means()</center>
+
+
+## Metrics
+
+### Sonarqube (Sonarcloud)
+
+![Sonarqube](doc_figures/sonar_cube_results.png)
+
+I passed the test! I also included some code coverage (*test.py*) and for some reason it does not include the tests. The solution: download the python module *coverage* and run a bash script on your test.py, then let *coverage* export you a Sonarqube-readable xml report file.
+
+```
+pip install coverage
+coverage run /path/to/file
+coverage xml -i
+```
+Returns you a XML file (*coverage.xml*). This file needs to be referenced to in Sonarcloud.
+
+Go-to:
+```
+Administration > General Settings > Python
+```
+and scroll down until you see *Tests and Coverage* and add in the second line 'coverage.xml'.
+
+![Coverage_setting](doc_figures/coverage_setting.png)
+
+Now re-run your evaluation and see your updated code coverage reports.
+
+```
+sonar-scanner \
+  -Dsonar.projectKey=oGuzee_pet_project \
+  -Dsonar.organization=oguzee-github \
+  -Dsonar.sources=. \
+  -Dsonar.host.url=https://sonarcloud.io \
+  -Dsonar.login=[personalToken]
+```
+
+![Coverage_setting](doc_figures/coverage.png)
+
+
+
+## PyLint
+
