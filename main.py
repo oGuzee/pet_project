@@ -7,7 +7,8 @@ from sklearn.cluster import KMeans
 from sklearn import metrics
 
 
-def outer_function(now=datetime.datetime.now()):
+def outer_function():
+    now = datetime.datetime.now()
     def inner_function():
         print('Application started at: ', now)
     inner_function()
@@ -43,6 +44,7 @@ def to_numpy_matrix(df):
     m = np.delete(m, (0), axis=0)
     return m
 
+# Higher Order Function
 def time_execution(f):
     def wrapped(*args, **kws):
         now = datetime.datetime.now()
