@@ -14,10 +14,12 @@ The only table used in the Project is *lapTimes*. It contains every driven lap, 
 
 
 ![default_data](doc_figures/data_example_default.png)
+
 <center>Figure 1: Default Data</center>
 
 
 ![aim_data](doc_figures/data_example.png)
+
 <center>Figure 2: We want it to look like this!</center>
 
 
@@ -42,18 +44,21 @@ I want to write my masters thesis about Formula 1 data. By modelling a sequence 
 
 Packages
 ![Packages](doc_figures/uml_packages.png)
+
 <center>Figure 3: Shows the used packages and respective methods</center>
 
 
 Activity main
 
 ![Activity](doc_figures/activity_umlmu.png)
+
 <center>Figure 4: The activity in main.py</center>
 
 
 Activity main.k_means()
 
 ![Activity_2](doc_figures/uml_kmeans.png)
+
 <center>Figure 5: The activity in main.k_means()</center>
 
 
@@ -62,6 +67,7 @@ Activity main.k_means()
 ### Sonarqube (Sonarcloud)
 
 ![Sonarqube](doc_figures/sonar_cube_results.png)
+
 <center>Figure 6: Results of Sonarqube</center>
 
 
@@ -81,6 +87,7 @@ Administration > General Settings > Python
 and scroll down until you see *Tests and Coverage* and add in the second line 'coverage.xml'.
 
 ![Coverage_setting](doc_figures/coverage_setting.png)
+
 <center>Figure 7: Settings</center>
 
 
@@ -96,12 +103,14 @@ sonar-scanner \
 ```
 
 ![Coverage_setting](doc_figures/coverage.png)
+
 <center>Figure 8: My test coverage</center>
 
 
 ### PyLint
 
 ![PyLint](doc_figures/pylint_metrics.png)
+
 <center>Figure 9: more snake_case advertising</center>
 
 
@@ -114,10 +123,12 @@ pylint --output-format=colorized filename.py
 ## Clean Code Developement
 
 ![PyLint](doc_figures/clean_code_1.png)
+
 <center>Figure 10: Clean Code accoring to Sonarqube</center>
 
 
 ![PyLint](doc_figures/clean_code_2.png)
+
 <center>Figure 11: Hooray!</center>
 
 
@@ -183,10 +194,12 @@ def to_numpy_matrix(df):
 ## Continous Delivery
 
 ![PyLint](doc_figures/travis_ci.png)
+
 <center>Figure 12: History of Travis-CI builds</center>
 
 
 ![PyLint](doc_figures/travis_ci2.png)
+
 <center>Figure 13: Four Tests ran successfully!</center>
 
 
@@ -224,6 +237,7 @@ pipreqs filename.py
 DSL (Domain Specific Languages) are languages that are used to speak with machines or computers in a certain domain. SQL (Structured Query Language) is a well-known example for DSL to communicate with databases, especially relational databases.
 
 ![PyLint](doc_figures/dash.png)
+
 <center>Figure 14: Four Tests ran successfully!</center>
 
 
@@ -253,6 +267,7 @@ app.layout = html.Div([ <-- Plotly Dash HTML libary
 The above code shows the corresponding HMTL element in the Browser.
 
 ![PyLint](doc_figures/dash_inspect.png)
+
 <center>Figure 15: HTML elements</center>
 
 
