@@ -17,7 +17,7 @@ app = dash.Dash()
 app.scripts.config.serve_locally = True
 
 # DFs
-results = pd.read_csv('f1db_csv/lap_times.csv', index_col=0)
+results = pd.read_csv('saved_data/vettel_australia_2011.csv', index_col=0)
 
 # Markdown
 markdown_title = '''
@@ -49,7 +49,6 @@ app.layout = html.Div([
     
     # Markdown html table
     dcc.Markdown(markdown_html_table),
-    generate_table(html_table),
     # Scatter Plot Dangerous
     
 
@@ -111,7 +110,7 @@ def update_figure(rows, selected_row_indices):
     ), 1, 1)
     fig.append_trace(go.Bar(
         x=dff['lap'],
-        y=dff['lap_milliseconds'],
+        y=dff['lap_milliseconds_diff'],
         text=dff['lap_time'],
         name='lap_time',
         marker={'color': ['#c50a0a']*len(dff)}

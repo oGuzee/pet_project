@@ -28,10 +28,12 @@ As you can see, there are 2 columns. *lap_milliseconds_diff* is the difference b
 
 One script: main.py
 
-main.py loads the data in the *f1db_csv* folder, filters by chosen driver *(int(id))* and race event *(int(id))*
+main.py loads the data in the *f1db_csv* folder into a Pandas DataFrame and filters by chosen driver *(int(id))* and race event *(int(id))*. After, the lap time differences are computed and the DataFrame is stripped of most of it's colums so only *lap_milliseconds_diff* and *lap* remains.is stripped of most of it's colums so only *lap_milliseconds_diff* and *lap* remains.
 
-The data is stripped of most of it's colums so only *lap_milliseconds_diff* and *lap* remains. Then turned into a numpy array and removed the first row. This is the data structure to give to the KMeans() algorithm.
-The cluster number k=5 was chosen to fit the wanted target labels.
+This is the data structure to give to the KMeans() algorithm.
+The cluster number k=5 was chosen to fit the wanted target labels. A figure of the date is saved in *figures* directory. The *labels* are saved and
+
+
 
 ### Why I chose Formula 1 data
 

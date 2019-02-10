@@ -71,18 +71,19 @@ def k_means(m, figurename):
 
     return labels
 
-def label_data(m, df):
+def label_data(m, df, outname):
     m = m.astype(str)
-    m = np.insert(m, 0, "")
+    m = np.insert(m, 0, outname)
     df['label'] = m
+    df.to_csv('saved_data/'+outname)
     return df
 
 if __name__ == '__main__':
     outer_function() # Closure
     df = load_csv('lap_times.csv')
-    df = filter_by_race_and_driver_id(df, 841, 1)
+    df = filter_by_race_and_driver_id(df, 841, 20)
     df = compute_diff(df)
     m = to_numpy_matrix(df)
-    labels = k_means(m, 'hamilton_australia_2011.png')
-    df = label_data(labels, df)
+    labels = k_means(m, 'vettel_australia_2011.png')
+    df = label_data(labels, df, 'vettel_australia_2011.csv')
     print(df)
