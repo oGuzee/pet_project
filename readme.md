@@ -13,9 +13,11 @@ The data is open source and can be downloaded from ergast.com/mrd. I downloaded 
 The only table used in the Project is *lapTimes*. It contains every driven lap, of every driver, at every race event since 1996. These are 440.000+ observations.
 
 Default Data
+
 ![default_data](doc_figures/data_example_default.png)
 
 We want it to look like this:
+
 ![aim_data](doc_figures/data_example.png)
 
 As you can see, there are 2 columns. *lap_milliseconds_diff* is the difference between lap time 't' and 't-1'. *label* is the computed cluster of the given instance. The aim is to cluster the data in such ways, that with domain knowledge and data visualization, one can see if a driver *push*ed, *preserve*d, is in a *pit-in-lap* or *pit-out-lap*, or if he had a on-track-*incident*. If the clustering is fits the review, add the labels to the DataFrame.
