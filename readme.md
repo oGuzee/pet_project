@@ -12,13 +12,14 @@ The data is open source and can be downloaded from ergast.com/mrd. I downloaded 
 
 The only table used in the Project is *lapTimes*. It contains every driven lap, of every driver, at every race event since 1996. These are 440.000+ observations.
 
-Default Data:
 
 ![default_data](doc_figures/data_example_default.png)
+<center>Figure 1: Default Data</center>
 
-We want it to look like this:
 
 ![aim_data](doc_figures/data_example.png)
+<center>Figure 2: We want it to look like this!</center>
+
 
 As you can see, there are 2 columns. *lap_milliseconds_diff* is the difference between lap time 't' and 't-1'. *label* is the computed cluster of the given instance. The aim is to cluster the data in such ways, that with domain knowledge and data visualization, one can see if a driver *push*ed, *preserve*d, is in a *pit-in-lap* or *pit-out-lap*, or if he had a on-track-*incident*. If the clustering is fits the review, add the labels to the DataFrame.
 
@@ -42,6 +43,7 @@ I want to write my masters thesis about Formula 1 data. By modelling a sequence 
 Packages
 ![Packages](doc_figures/uml_packages.png)
 <center>Figure 3: Shows the used packages and respective methods</center>
+
 
 Activity main
 
@@ -97,7 +99,6 @@ sonar-scanner \
 <center>Figure 8: My test coverage</center>
 
 
-
 ### PyLint
 
 ![PyLint](doc_figures/pylint_metrics.png)
@@ -115,8 +116,10 @@ pylint --output-format=colorized filename.py
 ![PyLint](doc_figures/clean_code_1.png)
 <center>Figure 10: Clean Code accoring to Sonarqube</center>
 
+
 ![PyLint](doc_figures/clean_code_2.png)
 <center>Figure 11: Hooray!</center>
+
 
 It seems like I have no code smells, nor any debt to pay!
 
@@ -149,7 +152,7 @@ def k_means(m, figurename):
 
 ### Vertical Separation
 
-Variables should be used immediately after they are created. All of my functions show, how to properly implement a variable and use it immediately. 
+Variables should be used immediately after they are created. All of my functions show, how to properly implement a variable and use it immediately.
 
 ```
 def compute_time_diff(df):
@@ -182,8 +185,10 @@ def to_numpy_matrix(df):
 ![PyLint](doc_figures/travis_ci.png)
 <center>Figure 12: History of Travis-CI builds</center>
 
+
 ![PyLint](doc_figures/travis_ci2.png)
 <center>Figure 13: Four Tests ran successfully!</center>
+
 
 Travis-CI was used thorught the whole of this project. It is very easy to install, it only requires you to allow access to your git-repository and wants you to make two files: *travis.yml* and *requirements.txt*
 
@@ -221,6 +226,7 @@ DSL (Domain Specific Languages) are languages that are used to speak with machin
 ![PyLint](doc_figures/dash.png)
 <center>Figure 14: Four Tests ran successfully!</center>
 
+
 *Note: This is just a mockup*
 
 I decided to visualize the final data via HTML and the Python library *Plotly* and *Dash*. I used a Python script I used for Dr. Biessmann's class 'Urban Technologies'. I stripped the unnecessary code lines and changed the variables.
@@ -248,6 +254,7 @@ The above code shows the corresponding HMTL element in the Browser.
 
 ![PyLint](doc_figures/dash_inspect.png)
 <center>Figure 15: HTML elements</center>
+
 
 This code will be adjusted in the future.
 
@@ -328,7 +335,7 @@ def outer_func():
   print('outer_func:', text)	# outer_func: enclosing text
   inner_func()
   print('outer_func:', text)	# outer_func: enclosing text
- 
+
 print('global:', text)	# global: global text
 outer_func()
 print('global:', text)	# global: global text
@@ -344,7 +351,7 @@ def outer_func():
   print('outer_func:', text)	# outer_func: enclosing text
   inner_func()
   print('outer_func:', text)	# outer_func: enclosing text
- 
+
 print('global:', text)	# global: global text
 outer_func()
 print('global:', text)	# global: inner text
