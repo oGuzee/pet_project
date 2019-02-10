@@ -64,7 +64,6 @@ def k_means(m):
     plt.savefig('figures/hamilton_australia_2011.png')
 
     print('Silhouette score: ', metrics.silhouette_score(m, labels, metric='euclidean'))
-    print('Score: ', kmeans.score(m))
 
     return labels
 
