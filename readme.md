@@ -24,7 +24,9 @@ As you can see, there are 2 columns. *lap_milliseconds_diff* is the difference b
 
 *Note: I choose to leave the first empty instace and didn't put the label feature at the beginning.*
 
-### How?
+### How does it work?
+
+Main.py
 
 The data is stripped of most of it's colums so only *lap_milliseconds_diff* and *lap* remains. Then turned into a numpy array and removed the first row. This is the data structure to give to the KMeans() algorithm.
 The cluster number k=5 was chosen to fit the wanted target labels.
