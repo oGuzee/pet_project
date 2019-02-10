@@ -54,15 +54,18 @@ def time_execution(f):
     return wrapped
 
 @time_execution
-def k_means(m):
-    ''' KMeans '''
+def k_means(m, figurename):
+    ''' KMeans algorithm is applied. \
+        Parameters: m = np.array (shape==(X,2))\
+                    figurename = str; example=  "hamilton_australia_2011.png"\
+        returns list; clustered labels of the instances '''
     kmeans = KMeans(n_clusters=5, random_state=41).fit(m)
     labels = kmeans.labels_
     print("Cluster centers: ", kmeans.cluster_centers_)
     print('Labels: ', kmeans.labels_)
 
     plt.scatter(m[:, 0], m[:, 1], c=labels, cmap='rainbow')
-    plt.savefig('figures/hamilton_australia_2011.png')
+    plt.savefig('figures/'+figurename)
 
     print('Silhouette score: ', metrics.silhouette_score(m, labels, metric='euclidean'))
 
@@ -80,6 +83,6 @@ if __name__ == '__main__':
     df = filter_by_race_and_driver_id(df, 841, 1)
     df = compute_diff(df)
     m = to_numpy_matrix(df)
-    labels = k_means(m)
+    labels = k_means(m, 'hamilton_australia_2011.png')
     df = label_data(labels, df)
     print(df)

@@ -26,7 +26,9 @@ As you can see, there are 2 columns. *lap_milliseconds_diff* is the difference b
 
 ### How does it work?
 
-Main.py
+One script: main.py
+
+main.py loads the data in the *f1db_csv* folder, filters by chosen driver *(int(id))* and race event *(int(id))*
 
 The data is stripped of most of it's colums so only *lap_milliseconds_diff* and *lap* remains. Then turned into a numpy array and removed the first row. This is the data structure to give to the KMeans() algorithm.
 The cluster number k=5 was chosen to fit the wanted target labels.
