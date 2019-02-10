@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from sklearn import metrics
 
-# Closure
+
 def outer_function(now=datetime.datetime.now()):
     def inner_function():
         print('Application started at: ', now)
@@ -43,6 +43,14 @@ def to_numpy_matrix(df):
     m = np.delete(m, (0), axis=0)
     return m
 
+def time_execution(f):
+    def wrapped(*args, **kws):
+        now = datetime.datetime.now()
+        print('[' + str(now) + '] Call Function: ' + f.__name__ + '()')
+        return f(*args, **kws)
+    return wrapped
+
+@time_execution
 def k_means(m):
     ''' KMeans '''
     kmeans = KMeans(n_clusters=5, random_state=41)
