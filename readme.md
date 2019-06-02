@@ -2,7 +2,7 @@
 
 # Pet project: Formula 1 data classification
 
-This project is an semester assignment. The aim is to develope code with criterea. Criterea like continuous delivery, clean code developement and functional programming. The following readme.md describes how the author accomplished those goals.
+This project is a semester assignment. The aim is to develope code with criterea. Criterea like continuous delivery, clean code developement and functional programming. The following readme.md describes how the author accomplished those goals.
 
 ## KMeans classifier for Formula 1 data
 
